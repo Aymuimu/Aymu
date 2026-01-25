@@ -246,9 +246,10 @@
 
             <div class="audio-player">
                 <div class="album-art" id="albumArt">🎵</div>
-                <div style="margin-top: 20px;">
-                    <iframe id="drivePlayer" style="width: 100%; height: 80px; border: none; border-radius: 10px;" src="" allow="autoplay"></iframe>
-                </div>
+                <audio id="audioPlayer" controls>
+                    <source id="audioSource" src="" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
                 <div class="controls">
                     <button class="control-btn" onclick="previousSong()">⏮️</button>
                     <button class="control-btn" onclick="nextSong()">⏭️</button>
@@ -269,37 +270,39 @@
 
     <script>
         const songs = [
-            { title: "Song 1", id: "12bMXu6PesXuDp2xz5p-b9-hAqOx8jGgT" },
-            { title: "Song 2", id: "1BK2nbDw0VKfkAkrGFkl1M-0_FC0flg4m" },
-            { title: "Song 3", id: "1pQ3GQLK5ilBOs3XEyR_zrKxxUPsEldaZ" },
-            { title: "Song 4", id: "1bs9tc80I4w2_N5Z9TWlO8jy2o9E4b7Tl" },
-            { title: "Song 5", id: "1YgO0g-ny0-6pzkdek8mSgecjit2Ez0_F" },
-            { title: "Song 6", id: "1uU6FTn4HlAWf5SBZVWXoS7DECMJOQM4O" },
-            { title: "Song 7", id: "1G_s_gRdYkv5W6U-ThSVic4Nq6Gxfn0OK" },
-            { title: "Song 8", id: "10GwUu5R10nqxuk9fexMFapTCoxGt5gm7" },
-            { title: "Song 9", id: "1sccGpswlvQqJPbd2gxtD2Qfkjz3B87Kw" },
-            { title: "Song 10", id: "13YuF38-TGjYJwV4UJZrWL7OdgQTqYth7" },
-            { title: "Song 11", id: "1z3rCTl3z8EryqHmH6c27KqP_t-AyU7pG" },
-            { title: "Song 12", id: "1o0CS742WfCp24xYuMnROl8Hf_Y6nsocc" },
-            { title: "Song 13", id: "1CJyaNOBWQe1mN_xDapjM8FTum2I_lD3n" },
-            { title: "Song 14", id: "1t2fPxISsNrktcIPD9Wt3HDaxiNa7vAmo" },
-            { title: "Song 15", id: "1hNgv_-8aXU1074sMyyYArJ1a4GbuyQ4J" },
-            { title: "Song 16", id: "12TdQihPsYhs5ZVGD517JLhkpT_FIVV8a" },
-            { title: "Song 17", id: "1Lg0bdvX1tAm_YhZJJgk30PCx3bn_i05C" },
-            { title: "Song 18", id: "1RiEvVulqTwK1LtkamAC2h602sfxabsnq" },
-            { title: "Song 19", id: "10_4TjkIXsD2_BHCGv7AB7tT1jhugZCYd" },
-            { title: "Song 20", id: "12xTaamNhnR9bhTLFvbSPYzkb5HVLzX1q" }
+            { title: "Aaja Piya Tohe", file: "https://dl.dropboxusercontent.com/scl/fi/ylzx95riik8z96snvefod/Aaja-Piya-Tohe-with-lyrics-Baharon-ke-Sapne-Asha-Parekh-Rajesh-Khanna.mp3?rlkey=d6dcjrfg9zk41h1pr9kfufjb1&dl=1" },
+            { title: "Are Re Are", file: "https://dl.dropboxusercontent.com/scl/fi/zwx33jnkq0sva9qrpatol/Are-Re-Are-Lyrical-Song-Dil-To-Pagal-Hai-Shah-Rukh-Khan-Madhuri-Lata-Udit-Anand-Bakshi.mp3?rlkey=oepym2caq9kcqnie068sk94xf&dl=1" },
+            { title: "Guzarish", file: "https://dl.dropboxusercontent.com/scl/fi/xcz1lwwcvythiqm0f6ee7/Full-Video_-Guzarish-Ghajini-Aamir-Khan-Asin-A.R.-Rahman-Javed-Ali-Sonu-Nigam.mp3?rlkey=ci54qk5u4l0eh06z5b03ndnsw&dl=1" },
+            { title: "Hypnotized", file: "https://dl.dropboxusercontent.com/scl/fi/jh4jwe769iawkoouvqfxm/Hypnotized.mp3?rlkey=w6wb4rcv7m6aw3mevcm0xx7az&dl=1" },
+            { title: "Jo Tu Nahi To Aisa", file: "https://dl.dropboxusercontent.com/scl/fi/7farutb27dzp5z7jnlv1c/Jo-Tu-Nahi-To-Aisa-Main-Chehra-Maand-Slowed-and-Reverb.mp3?rlkey=ej74sjwtmx719lnjc5f6et3hg&dl=1" },
+            { title: "Kabhi Jo Badal Barse", file: "https://dl.dropboxusercontent.com/scl/fi/g9b2enmmg2rziod2kloxx/Kabhi-Jo-Badal-Barse-Song-Video-Jackpot-Arijit-Singh-Sachiin-J-Joshi-Sunny-Leone.mp3?rlkey=efuoizdm3su8dq5iaol3blzbh&dl=1" },
+            { title: "Kara Sevda Guitar", file: "https://dl.dropboxusercontent.com/scl/fi/vg05hwfwxg0timyvj28bm/Kara-Sevda-Guitar.mp3?rlkey=r2th0gucnr9xewcqz9447yw1u&dl=1" },
+            { title: "Maanu Annural Khalid", file: "https://dl.dropboxusercontent.com/scl/fi/ngrgv3pfie3jn0g91pq83/Maanu-Annural-Khalid-Jhol-Visualizer-1.mp3?rlkey=w4s5tbstbhe74xtz4jlqayymq&dl=1" },
+            { title: "Main Koi Aisa Geet Gaoon", file: "https://dl.dropboxusercontent.com/scl/fi/hjjum3lnh6kfqt4jv2gpd/Main-Koi-Aisa-Geet-Gaoon-HD-VIDEO-Shah-Rukh-Khan-Juhi-Chawla-Yes-Boss-90-s-Romantic-Songs.mp3?rlkey=gz3ltfyxsghp3xwv5canytjid&dl=1" },
+            { title: "Nazar na Lag Jaaye", file: "https://dl.dropboxusercontent.com/scl/fi/way30lidrp2oct25s2cfq/Nazar-na-Lag-Jaaye-Lyrics-Ash-King-and-Sachin-jigar.mp3?rlkey=xdxxf8osvnrkqm0xlue4zvgwy&dl=1" },
+            { title: "O Re Piya", file: "https://dl.dropboxusercontent.com/scl/fi/uamb2yne0weysogwa129b/O-Re-Piya-Full-Song-Aaja-Nachle-Madhuri-Dixit-Rahat-Fateh-Ali-Khan-Salim-Sulaiman-Jaideep.mp3?rlkey=hzli7w15b1kxpq80nt9v28eaa&dl=1" },
+            { title: "Pal Pal X Talwiinder Mashup", file: "https://dl.dropboxusercontent.com/scl/fi/jm8j5m76pir1kmydejv6m/Pal-Pal-X-Talwiinder-Mashup-Afusic-Talha-Anjum-x-Aditya-Rikhari-Desifly-Vibes.mp3?rlkey=myrro5vqb1ukcev56d5v1ijfx&dl=1" },
+            { title: "Rauf Faik", file: "https://dl.dropboxusercontent.com/scl/fi/1x42cssfdzzngedvxseqk/Rauf-Faik-Official-audio.mp3?rlkey=jircek8hi7h2sh27c2znivcm9&dl=1" },
+            { title: "Sahiba x Samjho Na Mashup", file: "https://dl.dropboxusercontent.com/scl/fi/q5m7big2y9y9cjut6n6u7/Sahiba-x-Samjho-Na-Mashup-Aditya-Rikhari-Wishes-Best-of-Soulful-Mashup-2025.mp3?rlkey=84g9l2aan74t5q02fsepz6qfh&dl=1" },
+            { title: "Samjho Na X Wishes Mashup", file: "https://dl.dropboxusercontent.com/scl/fi/g3sxv05hwtepfzo4udjz4/Samjho-Na-X-Wishes-Mashup-Aditya-Rikhari-Hasan-Raheem-DJ-Sumit-Rajwanshi.mp3?rlkey=sy7z53hv61tdh8oi3l9rl0rn2&dl=1" },
+            { title: "Baba Ji", file: "https://dl.dropboxusercontent.com/scl/fi/d214spl4q27abjbm0tl3f/Sapna-Choudhary-_-Baba-Ji-Official-Video-Vishu-Puthi-Haryanvi-Song.mp3?rlkey=ggahuz7c20u213ev4p21goijq&dl=1" },
+            { title: "Suno Aisha", file: "https://dl.dropboxusercontent.com/scl/fi/n9ahu3qlnnlcsw9h11bwu/Suno-Aisha-Lyric-Video-Aisha-Sonam-Kapoor-Abhay-Deol-Javed-Akhtar-Amit-Trivedi-Ash-King.mp3?rlkey=oastamunnjt1u82x30njgv5lq&dl=1" },
+            { title: "Tarasti Hai Nigaahein", file: "https://dl.dropboxusercontent.com/scl/fi/ausnfybqk55t7j4gw028p/TARASTI-HAI-NIGAAHEIN-GHALAT-FEHMI-LYRICS-FULL-SONG.mp3?rlkey=f3nsiwli8u6hm8v6bk2aztv2s&dl=1" },
+            { title: "Love Story - Taylor Swift", file: "https://dl.dropboxusercontent.com/scl/fi/3cets3rc8yrc6vgaqpbdw/Taylor-Swift-Love-Story-Lyric-Video-Marry-me-Juliet-you-ll-never-have-to-be-alone.mp3?rlkey=360kpvic3x87wquapht34cy48&dl=1" },
+            { title: "Tu Jaane Na", file: "https://dl.dropboxusercontent.com/scl/fi/y401dykkofpnyuqxv6ssq/Tu-Jaane-Na-Full-Video-Ajab-Prem-Ki-Ghazab-Kahani-Ranbir-Kapoor-Katrina-Atif-Aslam-Pritam.mp3?rlkey=jumse3tyi7cnwqdlutw5chma0&dl=1" }
         ];
 
         let currentSongIndex = -1;
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
 
         function playSong(index) {
             currentSongIndex = index;
             const song = songs[index];
             
-            // Load song in Google Drive iframe player
-            const player = document.getElementById('drivePlayer');
-            player.src = `https://drive.google.com/file/d/${song.id}/preview`;
+            audioSource.src = song.file;
+            audioPlayer.load();
+            audioPlayer.play();
             
             document.getElementById('songTitle').textContent = song.title;
             document.getElementById('songNumber').textContent = `Track ${index + 1} of ${songs.length}`;
@@ -334,6 +337,9 @@
                 playSong(songs.length - 1);
             }
         }
+
+        // Auto-play next song when current ends
+        audioPlayer.addEventListener('ended', nextSong);
 
         // Create playlist
         const playlist = document.getElementById('playlist');
