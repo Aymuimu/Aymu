@@ -246,10 +246,9 @@
 
             <div class="audio-player">
                 <div class="album-art" id="albumArt">🎵</div>
-                <audio id="audioPlayer" controls>
-                    <source id="audioSource" src="" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+                <div style="margin-top: 20px;">
+                    <iframe id="drivePlayer" style="width: 100%; height: 80px; border: none; border-radius: 10px;" src="" allow="autoplay"></iframe>
+                </div>
                 <div class="controls">
                     <button class="control-btn" onclick="previousSong()">⏮️</button>
                     <button class="control-btn" onclick="nextSong()">⏭️</button>
@@ -270,44 +269,42 @@
 
     <script>
         const songs = [
-            { title: "Song 1", file: "https://drive.google.com/uc?export=download&id=12bMXu6PesXuDp2xz5p-b9-hAqOx8jGgT" },
-            { title: "Song 2", file: "https://drive.google.com/uc?export=download&id=1BK2nbDw0VKfkAkrGFkl1M-0_FC0flg4m" },
-            { title: "Song 3", file: "https://drive.google.com/uc?export=download&id=1pQ3GQLK5ilBOs3XEyR_zrKxxUPsEldaZ" },
-            { title: "Song 4", file: "https://drive.google.com/uc?export=download&id=1bs9tc80I4w2_N5Z9TWlO8jy2o9E4b7Tl" },
-            { title: "Song 5", file: "https://drive.google.com/uc?export=download&id=1YgO0g-ny0-6pzkdek8mSgecjit2Ez0_F" },
-            { title: "Song 6", file: "https://drive.google.com/uc?export=download&id=1uU6FTn4HlAWf5SBZVWXoS7DECMJOQM4O" },
-            { title: "Song 7", file: "https://drive.google.com/uc?export=download&id=1G_s_gRdYkv5W6U-ThSVic4Nq6Gxfn0OK" },
-            { title: "Song 8", file: "https://drive.google.com/uc?export=download&id=10GwUu5R10nqxuk9fexMFapTCoxGt5gm7" },
-            { title: "Song 9", file: "https://drive.google.com/uc?export=download&id=1sccGpswlvQqJPbd2gxtD2Qfkjz3B87Kw" },
-            { title: "Song 10", file: "https://drive.google.com/uc?export=download&id=13YuF38-TGjYJwV4UJZrWL7OdgQTqYth7" },
-            { title: "Song 11", file: "https://drive.google.com/uc?export=download&id=1z3rCTl3z8EryqHmH6c27KqP_t-AyU7pG" },
-            { title: "Song 12", file: "https://drive.google.com/uc?export=download&id=1o0CS742WfCp24xYuMnROl8Hf_Y6nsocc" },
-            { title: "Song 13", file: "https://drive.google.com/uc?export=download&id=1CJyaNOBWQe1mN_xDapjM8FTum2I_lD3n" },
-            { title: "Song 14", file: "https://drive.google.com/uc?export=download&id=1t2fPxISsNrktcIPD9Wt3HDaxiNa7vAmo" },
-            { title: "Song 15", file: "https://drive.google.com/uc?export=download&id=1hNgv_-8aXU1074sMyyYArJ1a4GbuyQ4J" },
-            { title: "Song 16", file: "https://drive.google.com/uc?export=download&id=12TdQihPsYhs5ZVGD517JLhkpT_FIVV8a" },
-            { title: "Song 17", file: "https://drive.google.com/uc?export=download&id=1Lg0bdvX1tAm_YhZJJgk30PCx3bn_i05C" },
-            { title: "Song 18", file: "https://drive.google.com/uc?export=download&id=1RiEvVulqTwK1LtkamAC2h602sfxabsnq" },
-            { title: "Song 19", file: "https://drive.google.com/uc?export=download&id=10_4TjkIXsD2_BHCGv7AB7tT1jhugZCYd" },
-            { title: "Song 20", file: "https://drive.google.com/uc?export=download&id=12xTaamNhnR9bhTLFvbSPYzkb5HVLzX1q" }
+            { title: "Song 1", id: "12bMXu6PesXuDp2xz5p-b9-hAqOx8jGgT" },
+            { title: "Song 2", id: "1BK2nbDw0VKfkAkrGFkl1M-0_FC0flg4m" },
+            { title: "Song 3", id: "1pQ3GQLK5ilBOs3XEyR_zrKxxUPsEldaZ" },
+            { title: "Song 4", id: "1bs9tc80I4w2_N5Z9TWlO8jy2o9E4b7Tl" },
+            { title: "Song 5", id: "1YgO0g-ny0-6pzkdek8mSgecjit2Ez0_F" },
+            { title: "Song 6", id: "1uU6FTn4HlAWf5SBZVWXoS7DECMJOQM4O" },
+            { title: "Song 7", id: "1G_s_gRdYkv5W6U-ThSVic4Nq6Gxfn0OK" },
+            { title: "Song 8", id: "10GwUu5R10nqxuk9fexMFapTCoxGt5gm7" },
+            { title: "Song 9", id: "1sccGpswlvQqJPbd2gxtD2Qfkjz3B87Kw" },
+            { title: "Song 10", id: "13YuF38-TGjYJwV4UJZrWL7OdgQTqYth7" },
+            { title: "Song 11", id: "1z3rCTl3z8EryqHmH6c27KqP_t-AyU7pG" },
+            { title: "Song 12", id: "1o0CS742WfCp24xYuMnROl8Hf_Y6nsocc" },
+            { title: "Song 13", id: "1CJyaNOBWQe1mN_xDapjM8FTum2I_lD3n" },
+            { title: "Song 14", id: "1t2fPxISsNrktcIPD9Wt3HDaxiNa7vAmo" },
+            { title: "Song 15", id: "1hNgv_-8aXU1074sMyyYArJ1a4GbuyQ4J" },
+            { title: "Song 16", id: "12TdQihPsYhs5ZVGD517JLhkpT_FIVV8a" },
+            { title: "Song 17", id: "1Lg0bdvX1tAm_YhZJJgk30PCx3bn_i05C" },
+            { title: "Song 18", id: "1RiEvVulqTwK1LtkamAC2h602sfxabsnq" },
+            { title: "Song 19", id: "10_4TjkIXsD2_BHCGv7AB7tT1jhugZCYd" },
+            { title: "Song 20", id: "12xTaamNhnR9bhTLFvbSPYzkb5HVLzX1q" }
         ];
 
         let currentSongIndex = -1;
-        const audioPlayer = document.getElementById('audioPlayer');
-        const audioSource = document.getElementById('audioSource');
 
         function playSong(index) {
             currentSongIndex = index;
             const song = songs[index];
             
-            audioSource.src = song.file;
-            audioPlayer.load();
-            audioPlayer.play();
+            // Load song in Google Drive iframe player
+            const player = document.getElementById('drivePlayer');
+            player.src = `https://drive.google.com/file/d/${song.id}/preview`;
             
             document.getElementById('songTitle').textContent = song.title;
             document.getElementById('songNumber').textContent = `Track ${index + 1} of ${songs.length}`;
             
-            // Update album art animation
+            // Update album art
             const albumArt = document.getElementById('albumArt');
             const icons = ['🎵', '🎶', '💕', '🎀', '🦋', '😻'];
             albumArt.textContent = icons[index % icons.length];
@@ -337,9 +334,6 @@
                 playSong(songs.length - 1);
             }
         }
-
-        // Auto-play next song when current ends
-        audioPlayer.addEventListener('ended', nextSong);
 
         // Create playlist
         const playlist = document.getElementById('playlist');
