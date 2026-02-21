@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 25%, #fff5fb 50%, #ffe8f5 75%, #ffeef8 100%);
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float-heart 15s infinite ease-in-out;
+        }
+
+        @keyframes float-heart {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 
+                0 25px 70px rgba(212, 80, 125, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border: 3px solid rgba(255, 192, 224, 0.8);
+            position: relative;
+            z-index: 2;
+            animation: fadeInLetter 1.5s ease-in;
+        }
+
+        @keyframes fadeInLetter {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 192, 224, 0.5);
+        }
+
+        .letter-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #d4507d, #e87aa5, #ff9ec4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(212, 80, 125, 0.3));
+        }
+
+        .letter-header .emoji-line {
+            font-size: 2.5rem;
+            margin: 15px 0;
+        }
+
+        .letter-content {
+            color: #5a3a4a;
+            font-size: 1.15rem;
+            line-height: 2;
+            text-align: left;
+        }
+
+        .letter-content p {
+            margin-bottom: 25px;
+            text-indent: 30px;
+        }
+
+        .letter-content p:first-of-type {
+            text-indent: 0;
+        }
+
+        .highlight {
+            color: #d4507d;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 192, 224, 0.5);
+            font-size: 1.3rem;
+            color: #d4507d;
+            font-style: italic;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #d4507d, #e87aa5);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(212, 80, 125, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(212, 80, 125, 0.5);
+        }
+
+        .decorative-border {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 30px 25px;
+            }
+            .letter-header h1 {
+                font-size: 2.2rem;
+            }
+            .letter-content {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <div class="letter-container">
+        <div class="letter-header">
+            <h1>To My Beautiful Begum Ji 💕</h1>
+            <div class="emoji-line">💌 🎀 💖</div>
+        </div>
+
+        <div class="letter-content">
+            <p>So the day is finally here 😭 we completed a whole year together and ab mei bol sakta hu <span class="highlight">begum ji</span>.</p>
+
+            <p><span class="highlight">A very happy 1st Anniversary to us.</span></p>
+
+            <p>This year has been alot of chaos, alot going wrong and alot finally going right par all that what matters is that you are with me and i am really happy with you being by my side. I can't tell you how much I love you and how this year has changed me into a true man (<span class="highlight">aapka aadmi</span>).</p>
+
+            <p>Par ha jaisa bhi ho this wasn't plan 😭 there was somethings more par vo hua nahi uske liye bada sa sorry.</p>
+
+            <div class="decorative-border">✨ 🌸 ✨</div>
+
+            <p>This is the year where we fought<br>
+            This is the year where we stayed with each other<br>
+            This is the year where we didn't give up on us<br>
+            This is the year where we found ourselves</p>
+
+            <div class="decorative-border">✨ 🌸 ✨</div>
+
+            <p>This year put alot on us, many were the days where we thought bas sab khatam ab. Par shayd destiny has different plans. <span class="highlight">We were finally back.</span></p>
+
+            <p>Countless amount of times me getting blocked and countless chup raho ke baad bhi i am here. Ji haa <span class="highlight">bohot zyada pyaaar karta hu aapse</span>.</p>
+
+            <p>I can't tell you how I see you, perfect word bhi kam hai. Ha we both have some flaws and maybe that's what makes us beautiful (of course aap ho). Mei toh khair ahem ahem 😊</p>
+
+            <p>So This was the <span class="highlight">besttest</span>, we finally met on 1st September and the moment my eyes laid on you. Sab kuch slow hogaya (yes I never believed aisa kuch par it really happened). I saw you and I knew you are the one and how beautiful mashallah you are hayee.</p>
+
+            <p><span class="highlight">Tumhare liye toh chand sitare le aunga 👀</span> dekhte raho bas.</p>
+
+            <p>Well if you are reading this upar dekho camera mei ek smile dedo choti si (iske liye hi toh sab kuch kar rhaa hu). To give you a better life jaha sirf tum aur mei and koi problems nahi (hum sath mei sab theek kar lenge). <span class="highlight">Gussa nahi karnnnaaa ji</span>.</p>
+
+            <p>Well chalo it's our movie time finally I made the website just for you taaki we can watch it together and we get things worked out.</p>
+
+            <p>Well tum bohot zyada achi ho sach mei. Tumhari aankhein ufffff hayeeee unme kho jau bas mann karta hai. Ahem ahem Aur aapki zulfe mashallah mashallah.</p>
+
+            <p><span class="highlight">You are beyond perfection</span> aur ye sirf mei aisehi nahi bol raha I do mean it. The way that I see you I know who you are and what you are capable of.</p>
+
+            <p>Bas itna samjh lo there is a guy in the whole world who loves you more than anything and he will do anything to make you feel special and truly love you.</p>
+
+            <p><span class="highlight">You deserve to be happy<br>
+            You deserve to be loved<br>
+            You deserve to be you</span></p>
+
+            <p>Chalo it's time once again <span class="highlight">a very happy anniversary to us jaan</span>.</p>
+
+            <div class="signature">
+                I love you sooooo much 🩷<br>
+                - Your Aadmi
+            </div>
+        </div>
+
+        <a href="./" class="back-button" onclick="goBack(event)">🎵 Back to Our Songs</a>
+    </div>
+
+    <script>
+        function goBack(event) {
+            event.preventDefault();
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = './';
+            }
+        }
+
+        // Create floating hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        const heartEmojis = ['💕', '💖', '💗', '💓', '💝', '🩷', '❤️'];
+        
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 10 + 's';
+            heart.style.animationDuration = (10 + Math.random() * 10) + 's';
+            heartsContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
